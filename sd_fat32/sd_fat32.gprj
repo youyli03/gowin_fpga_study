@@ -3,8 +3,17 @@
 <Project>
     <Template>FPGA</Template>
     <Version>5</Version>
-    <Device name="GW2A-18" pn="GW2A-LV18PG256CC8/I7">gw2a18-024</Device>
+    <Device name="GW2A-18" pn="GW2A-LV18PG256C8/I7">gw2a18-002</Device>
     <FileList>
-        <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll/gowin_rpll_48mhz.v" type="file.verilog" enable="1"/>
+        <File path="src/sd/sdio_clk_control.v" type="file.verilog" enable="1"/>
+        <File path="src/sd/sdio_init.v" type="file.verilog" enable="1"/>
+        <File path="src/sd/sdio_rx.v" type="file.verilog" enable="1"/>
+        <File path="src/sd/sdio_top.v" type="file.verilog" enable="1"/>
+        <File path="src/sd/sdio_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/sd_fat32.cst" type="file.cst" enable="1"/>
+        <File path="src/sd_fat32.sdc" type="file.sdc" enable="1"/>
+        <File path="src/sd_fat32.rao" type="file.gao" enable="1"/>
     </FileList>
 </Project>

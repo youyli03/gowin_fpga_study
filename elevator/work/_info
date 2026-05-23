@@ -1,0 +1,70 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dF:/Github/my_cpu/sim
+velevator
+Z0 !s110 1716652811
+!i10b 1
+!s100 T[D<IMSon9;X<a3IB=FlL1
+I`KMNdNI4zQWif;Fe`Wln@0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dF:/Github/gowin/elevator
+w1716652807
+8F:/Github/gowin/elevator/my_elevator.v
+FF:/Github/gowin/elevator/my_elevator.v
+L0 1
+Z3 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z4 !s108 1716652811.000000
+!s107 F:/Github/gowin/elevator/my_elevator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Github/gowin/elevator/my_elevator.v|
+!i113 1
+Z5 o-work work
+vkey4x4_driver
+R0
+!i10b 1
+!s100 <LVD6BGa85F::_PAPEZXP1
+I6gC^^=Vjah377jCLTAR;?1
+R1
+R2
+w1716649962
+8F:/Github/gowin/elevator/key4x4_driver.v
+FF:/Github/gowin/elevator/key4x4_driver.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 F:/Github/gowin/elevator/key4x4_driver.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Github/gowin/elevator/key4x4_driver.v|
+!i113 1
+R5
+vtb
+R0
+!i10b 1
+!s100 5M_UElTLnSAo0acJ``j2l3
+IJiVhM6Q=HR6DJ=XHjKkHn1
+R1
+R2
+w1716651142
+8F:/Github/gowin/elevator/tb.v
+FF:/Github/gowin/elevator/tb.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 F:/Github/gowin/elevator/tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|F:/Github/gowin/elevator/tb.v|
+!i113 1
+R5

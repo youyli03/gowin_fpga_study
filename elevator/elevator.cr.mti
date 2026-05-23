@@ -1,0 +1,22 @@
+F:/Github/gowin/elevator/my_elevator.v {1 {vlog -work work -stats=none F:/Github/gowin/elevator/my_elevator.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module elevator
+
+Top level modules:
+	elevator
+
+} {} {}} F:/Github/gowin/elevator/key4x4_driver.v {1 {vlog -work work -stats=none F:/Github/gowin/elevator/key4x4_driver.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module key4x4_driver
+
+Top level modules:
+	key4x4_driver
+
+} {} {}} F:/Github/gowin/elevator/tb.v {1 {vlog -work work -stats=none F:/Github/gowin/elevator/tb.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module tb
+
+Top level modules:
+	tb
+
+} {} {}}

@@ -4,12 +4,12 @@ module sdio_top(
 
     output wire sdio_clk    ,
     inout       sdio_cmd    ,
-    inout [3:0] sdio_data
+    inout [3:0] sdio_data   
 );
-
 
 wire clk_mod, ctrl_clk;
 assign clk_mod = 1'd0;
+assign sdio_data = 4'bzzzz;
 sdio_clk_control sdio_clk_control0(
     .rst_n          (  rst_n     ),
     .clk48mhz       (  clk48mhz  ),

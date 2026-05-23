@@ -56,12 +56,12 @@ always @(posedge ctrl_clk or negedge rst_n) begin
             IDLE:begin
                 if(tx_en_state && sdio_clk == 1'd1)begin
                     o_busy      <= 1'd1;
-                    sdio_cmd_o  <= 1'd0;
+                    sdio_cmd_o  <= 1'd1;
                     bit_cnt     <= bit_cnt + 16'd1;
                     state       <= WORK;
                     cmd_buf     <= i_cmd;
                     para_buf    <= i_para;
-                    crc7_en     <= 1'd1;
+                    crc7_en     <= 1'd0;
                     sdio_cmd_oen<= 1'd1;
                     tx_en_state <= 1'd0;
                 end
@@ -78,32 +78,35 @@ always @(posedge ctrl_clk or negedge rst_n) begin
             WORK:begin
                 sdio_cmd_oen<= 1'd1;
                 bit_cnt     <= bit_cnt + 16'd1;
-                if(bit_cnt[15:1] <= 15'd39 && bit_cnt[0] == 1'd0)
+                if(bit_cnt[15:1] <= 15'd40 && bit_cnt[0] == 1'd0)
                     crc7_en     <= 1'd1;
                 else
                     crc7_en     <= 1'd0;
                 if(bit_cnt[0] == 1'd0)begin
                     if(bit_cnt[15:1] == 15'd1)begin//传输标志
+                        sdio_cmd_o  <= 1'd0;
+                    end
+                    if(bit_cnt[15:1] == 15'd2)begin//传输标志
                         sdio_cmd_o  <= 1'd1;
                     end
-                    else if(15'd1 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd7)begin//命令
+                    else if(15'd2 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd8)begin//命令
                         sdio_cmd_o  <= cmd_buf[5];
                         cmd_buf     <= {cmd_buf[4:0],1'd0};
                     end
-                    else if(15'd7 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd39)begin
+                    else if(15'd8 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd40)begin
                         sdio_cmd_o  <= para_buf[31];
                         para_buf    <= {para_buf[30:0],1'd0};
                     end
-                    else if(bit_cnt[15:1] == 15'd40)begin
+                    else if(bit_cnt[15:1] == 15'd41)begin
                         sdio_cmd_o  <= crc7_o[6];
                         crc7_buf    <= {crc7_o[5:0],1'd0};
                     end
-                    else if(15'd40 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd46)begin
+                    else if(15'd41 < bit_cnt[15:1]  && bit_cnt[15:1] <= 15'd47)begin
                         sdio_cmd_o  <= crc7_buf[6];
                         crc7_buf    <= {crc7_buf[5:0],1'd0};
                         crc7_clear  <= 1'd0;
                     end
-                    else if(15'd46 < bit_cnt[15:1])begin
+                    else if(15'd47 < bit_cnt[15:1])begin
                         sdio_cmd_o  <= 1'd1;
                         state       <= DOWN;
                         crc7_clear  <= 1'd1;
@@ -111,13 +114,15 @@ always @(posedge ctrl_clk or negedge rst_n) begin
                 end
             end
             DOWN:begin
-                bit_cnt     <= bit_cnt + 16'd1;
                 if(bit_cnt[0] == 1'd0)begin
                     state <= IDLE;
-                    crc7_clear  <= 1'd0;
+                    crc7_clear  <= 1'd1;
                     o_busy      <= 1'd0;
                     sdio_cmd_oen<= 1'd0;
+                    bit_cnt     <= 16'd0;
                 end
+                else
+                    bit_cnt     <= bit_cnt + 16'd1;
             end
         endcase
     end

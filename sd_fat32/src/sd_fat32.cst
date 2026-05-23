@@ -1,0 +1,30 @@
+//Copyright (C)2014-2023 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//GOWIN Version: V1.9.9 Beta-5
+//Part Number: GW2A-LV18PG256C8/I7
+//Device: GW2A-18
+//Created Time: Sun 12 03 01:00:46 2023
+
+IO_LOC "led_sd_rst" A13;
+IO_PORT "led_sd_rst" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "led0" C13;
+IO_PORT "led0" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sdio_clk" N10;
+IO_PORT "sdio_clk" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sdio_cmd" R14;
+IO_PORT "sdio_cmd" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sd_det" D15;
+IO_PORT "sd_det" PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "rst_n" C7;
+IO_PORT "rst_n" PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "clk" H11;
+IO_PORT "clk" PULL_MODE=UP BANK_VCCIO=1.8;
+IO_LOC "sdio_data[1]" M7;
+IO_PORT "sdio_data[1]" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sdio_data[3]" N11;
+IO_PORT "sdio_data[3]" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sdio_data[2]" M10;
+IO_PORT "sdio_data[2]" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;
+IO_LOC "sdio_data[0]" M8;
+IO_PORT "sdio_data[0]" PULL_MODE=UP DRIVE=8 BANK_VCCIO=1.8;

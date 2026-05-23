@@ -7,8 +7,9 @@ module sdio_clk_control(
 );
 
 reg sdio_clk200khz, sdio_clk24mhz;
-reg clk400khz;
+reg clk400khz, clk800khz;
 reg [5:0] clk400khz_cnt;
+reg [5:0] clk800khz_cnt;
 
 assign ctrl_clk = (clk_mod == 1'd0) ? clk400khz : clk48mhz;
 assign sdio_clk = (clk_mod == 1'd0) ? sdio_clk200khz : sdio_clk24mhz;
@@ -21,11 +22,28 @@ end
 
 always@(posedge clk48mhz or negedge rst_n)begin
     if(~rst_n) begin
+        clk800khz <= 1'd0;
+        clk800khz_cnt  <= 6'd0;
+    end
+    else begin
+        if(clk800khz_cnt == 6'd9) begin
+            clk800khz_cnt   <= 6'd0;
+            clk800khz       <= ~clk800khz;
+        end
+        else begin
+            clk800khz_cnt   <= clk800khz_cnt + 6'd1;
+            clk800khz       <= clk800khz;
+        end
+    end
+end
+
+always@(posedge clk48mhz or negedge rst_n)begin
+    if(~rst_n) begin
         clk400khz <= 1'd0;
         clk400khz_cnt  <= 6'd0;
     end
     else begin
-        if(clk400khz_cnt == 6'd59) begin
+        if(clk400khz_cnt == 6'd119) begin
             clk400khz_cnt   <= 6'd0;
             clk400khz       <= ~clk400khz;
         end
